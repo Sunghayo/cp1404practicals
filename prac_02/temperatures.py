@@ -1,27 +1,39 @@
-"""
-CP1404/CP5632 - Practical
-Pseudocode for temperature conversion
-"""
+# Constants for menu options and temperature conversion factors
+MENU = """C - Convert Celsius to Fahrenheit F - Convert Fahrenheit to Celsius Q - Quit"""
+FAHRENHEIT_MULTIPLIER = 9.0 / 5
+FAHRENHEIT_OFFSET = 32
+CELSIUS_MULTIPLIER = 5.0 / 9
 
-MENU = """C - Convert Celsius to Fahrenheit
-F - Convert Fahrenheit to Celsius
-Q - Quit"""
-print(MENU)
-choice = input(">>> ").upper()
-while choice != "Q":
-    if choice == "C":
-        celsius = float(input("Celsius: "))
-        fahrenheit = celsius * 9.0 / 5 + 32
-        print(f"Result: {fahrenheit:.2f} F")
-    elif choice == "F":
-        # TODO: Write this section to convert F to C and display the result
-        # Hint: celsius = 5 / 9 * (fahrenheit - 32)
-        # Remove the "pass" statement when you are done. It's a placeholder.
-        fahrenheit = float(input("Fahrenheit: "))
-        celsius = 5 / 9 * (fahrenheit - 32)
-        print(f"Result: {celsius:.2f} C")
-    else:
-        print("Invalid option")
+
+def main():
+    # Main function to handle user input and display menu
     print(MENU)
     choice = input(">>> ").upper()
-print("Thank you.")
+    while choice != "Q":
+        if choice == "C":
+            celsius = float(input("Celsius: "))
+            fahrenheit = convert_celsius_to_fahrenheit(celsius)
+            print(f"Result: {fahrenheit:.2f} F")
+        elif choice == "F":
+            fahrenheit = float(input("Fahrenheit: "))
+            celsius = convert_fahrenheit_to_celsius(fahrenheit)
+            print(f"Result: {celsius:.2f} C")
+        else:
+            print("Invalid option")
+        print(MENU)
+        choice = input(">>> ").upper()
+    print("Thank you.")
+
+
+def convert_celsius_to_fahrenheit(celsius):
+    # Convert Celsius to Fahrenheit
+    return celsius * FAHRENHEIT_MULTIPLIER + FAHRENHEIT_OFFSET
+
+
+def convert_fahrenheit_to_celsius(fahrenheit):
+    # Convert Fahrenheit to Celsius
+    return CELSIUS_MULTIPLIER * (fahrenheit - FAHRENHEIT_OFFSET)
+
+
+# Start the program
+main()
