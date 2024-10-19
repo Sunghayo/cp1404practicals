@@ -14,13 +14,13 @@ HEX_COLOURS = {
 
 def main():
     """Look up hexadecimal colour codes by name."""
-    colour_name = input("Enter colour name: ")
+    colour_name = input("Enter colour name: ").strip().title()  # Convert input to title case
     while colour_name != "":
-        if colour_name in HEX_COLOURS:
+        try:
             print(f"{colour_name} is {HEX_COLOURS[colour_name]}")
-        else:
+        except KeyError:
             print("Invalid colour name")
-        colour_name = input("Enter colour name: ")
+        colour_name = input("Enter colour name: ").strip().title()  # Convert input to title case again
 
 
 main()
