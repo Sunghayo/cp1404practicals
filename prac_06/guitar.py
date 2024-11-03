@@ -24,3 +24,12 @@ class Guitar:
     def __str__(self):
         """Return formatted string representation of the guitar."""
         return f"{self.name} ({self.year}) : ${self.cost:,.2f}"
+
+    def get_age(self):
+        """Return how old the guitar is in years."""
+        current_year = datetime.now().year
+        return current_year - self.year
+
+    def is_vintage(self):
+        """Return True if guitar is 50 or more years old, False otherwise."""
+        return self.get_age() >= 50
