@@ -9,10 +9,15 @@ def main():
             break
 
         try:
-            page = wikipedia.page(search_term)
+            page = wikipedia.page(search_term, autosuggest=True)
             print_page_details(page)
+        except wikipedia.DisambiguationError as e:
+            print("We need a more specific title. Try one of the following:")
+            print(e.options)
+        except wikipedia.PageError:
+            print(f'Page id "{search_term}" does not match any pages. Try another id!')
         except Exception as e:
-            print(f"An error occurred: {e}")
+            print(f"An unexpected error occurred: {e}")
 
 
 def print_page_details(page):
