@@ -1,5 +1,12 @@
 import wikipedia
 
+def print_page_details(page):
+    """Print details of the Wikipedia page."""
+    print(f"\nTitle: {page.title}")
+    print(f"Summary: {page.summary[:500]}...")  # Truncate summary for readability
+    print(f"URL: {page.url}\n")
+
+
 def main():
     print("Wikipedia Search")
     while True:
@@ -19,12 +26,6 @@ def main():
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
 
-
-def print_page_details(page):
-    """Print details of the Wikipedia page."""
-    print(f"\nTitle: {page.title}")
-    print(f"Summary: {page.summary[:500]}...")  # Truncate summary for readability
-    print(f"URL: {page.url}\n")
 
 
 if __name__ == "__main__":
